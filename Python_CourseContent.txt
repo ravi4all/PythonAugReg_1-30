@@ -1,0 +1,52 @@
+C/C++
+Server Side
+
+Python - General Purpose Programming
+
+5th gen programming
+
+Software Development
+Web Development
+Game Development
+Software Testing
+
+Maths - Stats, Probability, Linear Algebra
+AI - Data Scientist - Machine Learning
+
+Core Python
+Loosely Typed language - No Data types, No semicolon, No Curly Braces
+Functional Programming
+
+File Handling
+Exception Handling
+Data Structures
+
+Pygame - Game Programming
+
+Advance Python
+Object Oriented
+GUI - Graphical User Interface
+CGI - Common gateway interface 
+MySQL
+Networking
+Multithreading
+Web Crawling
+
+
+
+Numpy
+Scipy
+Matplotlib
+Pandas
+
+Machine Learning
+Data
+NLP - Natural Language Processing  - ChatBots
+
+Deep Learning - 
+
+
+
+
+
+
