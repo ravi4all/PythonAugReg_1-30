@@ -1,7 +1,6 @@
 import pygame
 from pygame.locals import *
 import random
-import Level2 as level_2
 
 pygame.init()
 pygame.mixer.init()
@@ -16,9 +15,8 @@ size = width, height = 1000, 500
 
 screen = pygame.display.set_mode(size)
 
-pointer = pygame.image.load("images/aim_pointer.png")
-# gunImage = pygame.image.load("images/gun.png")
-gunImage = pygame.image.load("images/gun_2.png")
+pointer = pygame.image.load("images/aim_2.png")
+gunImage = pygame.image.load("images/gun_1.png")
 
 zombie_1 = pygame.image.load("images/zombie_1.gif")
 zombie_2 = pygame.image.load("images/zombie_2.png")
@@ -60,40 +58,23 @@ def score(c):
     font = pygame.font.Font('font_1.otf', 50)
     text = font.render("Score : "+str(c), True, yellow)
     screen.blit(text, (10,10))
-
-def level():
-    font = pygame.font.SysFont(None, 80)
-    text = font.render("Level Completed", True, red)
-
-    font_1 = pygame.font.SysFont(None, 80)
-    text_1 = font_1.render("Press SPACE for next level", True, yellow)
-
-    while True:
-        for event in pygame.event.get():
-
-            if event.type == pygame.QUIT:
-                quit()
-
-            if event.type == pygame.KEYDOWN:
-                if event.key == K_SPACE:
-                    level_2.main()
-
-        screen.blit(text, (200,100))
-        screen.blit(text_1, (100,300))
-
-        pygame.display.update()
+    file = open('score.txt','w')
+    file.write(str(c))
 
 def main():
     zombie_x = random.randint(0,width-200)
     zombie_y = random.randint(0,height-200)
     zombieImage = random.choice(zombieList)
 
+    zombieScaleX = 130
+    zombieScaleY = 180
+
     gun_y = height/2+30
 
     counter = 0
     clicked = 0
 
-    seconds = 10
+    seconds = 30
     pygame.time.set_timer(USEREVENT + 1, 1000)
 
     game = True
@@ -113,26 +94,30 @@ def main():
                 gun_shot.play()
                 gun_y -= 40
                 if rect_1.colliderect(rect_2):
-                    screen.blit(bloodImage, (mouse_pos_x, mouse_pos_y))
-                    zombie_x = random.randint(0,width-200)
-                    zombie_y = random.randint(0,height-200)
-                    zombieImage = random.choice(zombieList)
-                    counter += 1
+                    clicked += 1
+                    screen.blit(bloodImage, (mouse_pos_x - 50, mouse_pos_y - 50))
+                    zombieImage = pygame.transform.scale(zombieImage, (zombieScaleX, zombieScaleY))
+                    zombieScaleX -= 10
+                    zombieScaleY -= 10
+                    if clicked == 3:
+                        zombie_x = random.randint(0,width-200)
+                        zombie_y = random.randint(0,height-200)
+                        zombieImage = random.choice(zombieList)
+                        counter += 1
+                        clicked = 0
+                        zombieScaleX = 100
+                        zombieScaleY = 150
+
             elif event.type == pygame.MOUSEBUTTONUP:
                 gun_y = height/2+30
 
         if seconds == -1:
             gameOver(counter)
 
-        if counter == 10:
-            level()
-            # level_2.main()
-
         mouse_pos_x, mouse_pos_y = pygame.mouse.get_pos()
 
         screen.blit(zombieImage, (zombie_x, zombie_y))
         screen.blit(pointer, (mouse_pos_x - 50, mouse_pos_y - 50))
-
         screen.blit(gunImage, (mouse_pos_x,gun_y))
 
         rect_1 = pygame.Rect(mouse_pos_x-50, mouse_pos_y-50, pointer.get_width(), pointer.get_height())
@@ -147,4 +132,4 @@ def main():
 
     quit()
 
-main()
+# main()
