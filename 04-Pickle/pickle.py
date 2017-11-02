@@ -1,7 +1,13 @@
 import pickle
 
-data = [{"id" : 101, "name" : "Ram", "age" : 20}]
+a = [1,2,3,4,5]
 
-with open("pickle_1.pickle", 'wb') as file:
-    pickle.dump(data, file)
-    print("Object Stored...")
+##data = pickle.dumps(a)
+##print(data)
+
+##wb - Write Bytes
+file = open('obj_1.pickle', 'wb')
+
+data = pickle.dump(a,file)
+
+file.close()
