@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1>Register Now</h1>
+
+<form action="cgi-bin/register.py" method="post">
+    <table>
+        <tr>
+            <td>Enter Name</td>
+            <td>
+                <input type="text" placeholder="Enter Name" name="username">
+            </td>
+        </tr>
+        <tr>
+            <td>Enter Password</td>
+            <td>
+                <input type="password" placeholder="Enter Password" name="userpwd">
+            </td>
+        </tr>
+        <tr>
+            <td>Enter Email ID</td>
+            <td>
+                <input type="email" placeholder="Enter Email" name="usermail">
+            </td>
+        </tr>
+        <tr>
+            <td>Enter Location</td>
+            <td>
+                <select name="city">
+                    <option value="mum">Mumbai</option>
+                    <option value="del">Delhi</option>
+                    <option value="pune">Pune</option>
+                    <option value="luck">Lucknow</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Select Gender</td>
+            <td>
+                <input type="radio" name="gender" value="m"> Male
+                <input type="radio" name="gender" value="f"> Female
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <input type="submit" value="Register">
+            </td>
+        </tr>
+    </table>
+</form>
+
+</body>
+</html>
