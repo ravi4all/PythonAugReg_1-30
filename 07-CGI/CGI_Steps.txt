@@ -1,0 +1,13 @@
+1. Goto location where you want to start your server
+2. open cmd at that location
+3. python -m http.server 8080(optional)
+4. Open browser and type localhost:8080
+
+---------------------------------------------------------
+Running cgi-scripts
+
+python -m http.server --cgi 8080(optional)
+
+CGI - 70% Python 30% HTML
+
+Django/Flask/Pyramid/Bottleneck - 90% HTML 10% Python
